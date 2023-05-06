@@ -3,5 +3,5 @@
 ### 快速开始
 
 ```
-npm i cc-ui
+npm i easycc-rc-5
 ```

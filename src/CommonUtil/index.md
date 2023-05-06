@@ -3,7 +3,7 @@
 通用工具（导入、导出）
 
 ```tsx
-import { CommonUtil } from 'cc-ui';
+import { CommonUtil } from 'easycc-rc-5';
 
 export default () => {
   /**

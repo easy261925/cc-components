@@ -4,7 +4,7 @@
 
 ```tsx
 import { Form } from 'antd';
-import { EditTable } from 'cc-ui';
+import { EditTable } from 'easycc-rc-5';
 import moment from 'moment';
 
 export default () => {

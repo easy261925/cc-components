@@ -4,8 +4,8 @@
 
 ```tsx
 import { Form } from 'antd';
-import { SearchBar } from 'cc-ui';
-import { CommonColumnsType, SearcherEntity } from 'cc-ui/types';
+import { SearchBar } from 'easycc-rc-5';
+import { CommonColumnsType, SearcherEntity } from 'easycc-rc-5/types';
 import moment from 'moment';
 
 export default () => {

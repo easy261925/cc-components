@@ -22,18 +22,18 @@ import React, {
 import { FormOutlined, RedoOutlined } from '@ant-design/icons';
 import type { FormInstance } from 'antd/es/form';
 import { TableProps } from 'antd/es/table';
-import { CommonUtil } from 'cc-ui';
-import SearchBar from 'cc-ui/SearchBar';
-import { useDebounceFn } from 'cc-ui/hooks/useDebounceFn';
+import { CommonUtil } from 'easycc-rc-5';
+import SearchBar from 'easycc-rc-5/SearchBar';
+import { useDebounceFn } from 'easycc-rc-5/hooks/useDebounceFn';
 import {
   BaseEntity,
   CommonColumnsType,
   PageResponseEntity,
   PaginationEntity,
   ResponseEntity,
-} from 'cc-ui/types';
-import { MAX_PAGE_SIZE } from 'cc-ui/util/constants';
-import { handleSearchParams } from 'cc-ui/util/handleParams';
+} from 'easycc-rc-5/types';
+import { MAX_PAGE_SIZE } from 'easycc-rc-5/util/constants';
+import { handleSearchParams } from 'easycc-rc-5/util/handleParams';
 import moment, { Moment } from 'moment';
 
 const EditableContext = createContext<FormInstance<any> | null>(null);

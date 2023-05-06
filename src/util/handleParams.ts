@@ -1,4 +1,4 @@
-import { CommonColumnsType, SearcherEntity } from 'cc-ui/types';
+import { CommonColumnsType, SearcherEntity } from 'easycc-rc-5/types';
 import moment from 'moment';
 
 /**

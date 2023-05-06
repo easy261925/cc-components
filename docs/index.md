@@ -1,6 +1,6 @@
 ---
 hero:
-  title: cc-ui
+  title: easycc-rc-5
   description: 基于 ant design 组件库(beta版本)
   actions:
     - text: 开始使用

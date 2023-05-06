@@ -9,7 +9,7 @@ export default defineConfig({
       { title: '组件', link: '/components/common-table' },
     ],
     socialLinks: {
-      github: 'https://github.com/easy261925/cc-ui',
+      github: 'https://github.com/easy261925/easycc-rc-5',
     },
   },
 });

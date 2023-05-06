@@ -11,18 +11,21 @@ import {
   Table,
 } from 'antd';
 import { FormInstance } from 'antd/es/form';
-import CommonUtil from 'cc-ui/CommonUtil';
-import { useDebounceFn } from 'cc-ui/hooks/useDebounceFn';
-import SearchBar from 'cc-ui/SearchBar';
-import { BaseEntity } from 'cc-ui/types';
+import CommonUtil from 'easycc-rc-5/CommonUtil';
+import { useDebounceFn } from 'easycc-rc-5/hooks/useDebounceFn';
+import SearchBar from 'easycc-rc-5/SearchBar';
+import { BaseEntity } from 'easycc-rc-5/types';
 import {
   CommonColumnsType,
   FormModeEnum,
   PageResponseEntity,
   PaginationEntity,
   ResponseEntity,
-} from 'cc-ui/types/CommonEntity';
-import { handleParams, handleSearchParams } from 'cc-ui/util/handleParams';
+} from 'easycc-rc-5/types/CommonEntity';
+import {
+  handleParams,
+  handleSearchParams,
+} from 'easycc-rc-5/util/handleParams';
 import React, { cloneElement, CSSProperties, useEffect, useState } from 'react';
 
 interface CommonTableProps<T> {

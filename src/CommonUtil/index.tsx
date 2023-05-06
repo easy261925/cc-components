@@ -1,8 +1,8 @@
 import { CloudUploadOutlined, DownloadOutlined } from '@ant-design/icons';
 import { Button, Row, Space, Upload, message } from 'antd';
 import { FormInstance } from 'antd/es/form';
-import { CommonColumnsType, ResponseEntity } from 'cc-ui/types';
-import { handleSearchParams } from 'cc-ui/util/handleParams';
+import { CommonColumnsType, ResponseEntity } from 'easycc-rc-5/types';
+import { handleSearchParams } from 'easycc-rc-5/util/handleParams';
 import React, { CSSProperties } from 'react';
 
 type CommonUtilProps = {
