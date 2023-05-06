@@ -4,7 +4,7 @@
 
 ```tsx
 import { DatePicker, Form, Input } from 'antd';
-import { CommonTable } from 'cc-components';
+import { CommonTable } from 'cc-ui';
 import moment from 'moment';
 
 export default () => {

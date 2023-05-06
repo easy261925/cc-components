@@ -3,15 +3,10 @@
 通用搜索栏
 
 ```tsx
-import { SearchBar } from 'cc-components';
-import {
-  BaseEntity,
-  CommonColumnsType,
-  PaginationEntity,
-  SearcherEntity,
-} from 'cc-components/types';
-import moment from 'moment';
 import { Form } from 'antd';
+import { SearchBar } from 'cc-ui';
+import { CommonColumnsType, SearcherEntity } from 'cc-ui/types';
+import moment from 'moment';
 
 export default () => {
   const [searchForm] = Form.useForm();

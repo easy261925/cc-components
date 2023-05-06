@@ -4,7 +4,7 @@
 
 ```tsx
 import { Form } from 'antd';
-import { EditTable } from 'cc-components';
+import { EditTable } from 'cc-ui';
 import moment from 'moment';
 
 export default () => {
@@ -47,9 +47,9 @@ export default () => {
    * @param row 单行数据
    */
   const rowOnChange = async (row: any) => {
-       console.log('监听单行数据变化', row);
+    console.log('监听单行数据变化', row);
     return true;
-  }
+  };
 
   return (
     <EditTable

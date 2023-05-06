@@ -3,7 +3,7 @@
 CommonChart
 
 ```tsx
-import { CommonChart } from 'cc-components';
+import { CommonChart } from 'cc-ui';
 
 /**
  * 模拟数据及图表配置
