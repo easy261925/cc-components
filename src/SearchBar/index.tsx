@@ -15,7 +15,7 @@ import {
   CommonColumnsType,
   PaginationEntity,
   SearcherEntity,
-} from 'easycc-rc-5/types';
+} from 'easycc-rc-5/entity';
 import { handleSearchParams } from 'easycc-rc-5/util/handleParams';
 import moment from 'moment';
 import React, { CSSProperties, useState } from 'react';

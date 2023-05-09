@@ -1,4 +1,5 @@
 export type { BaseEntity } from './BaseEntity';
+export { FormModeEnum } from './CommonEntity';
 export type {
   CommonColumnsType,
   FileExportEntity,

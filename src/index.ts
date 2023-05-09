@@ -3,9 +3,8 @@ export { default as CommonTable } from './CommonTable';
 export { default as CommonUtil } from './CommonUtil';
 export { default as EditTable } from './EditTable';
 export { default as SearchBar } from './SearchBar';
-export { useDebounceFn } from './hooks/useDebounceFn';
-export type { BaseEntity } from './types/BaseEntity';
 export type {
+  BaseEntity,
   CommonColumnsType,
   FileExportEntity,
   OptionEntity,
@@ -13,7 +12,8 @@ export type {
   PaginationEntity,
   ResponseEntity,
   SearcherEntity,
-} from './types/CommonEntity';
+} from './entity';
+export { useDebounceFn } from './hooks/useDebounceFn';
 export { MAX_PAGE_SIZE } from './util/constants';
 export { delay } from './util/delay';
 export { handleParams, handleSearchParams } from './util/handleParams';

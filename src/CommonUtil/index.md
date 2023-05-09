@@ -3,6 +3,7 @@
 通用工具（导入、导出）
 
 ```tsx
+import axios from 'axios';
 import { CommonUtil } from 'easycc-rc-5';
 
 export default () => {
@@ -33,6 +34,11 @@ export default () => {
     return axios.post(`/api/xxx/importExcel`, params);
   };
 
-  return <CommonUtil />;
+  return (
+    <CommonUtil
+      exportExcelService={exportExcelService}
+      importExcelService={importExcelService}
+    />
+  );
 };
 ```

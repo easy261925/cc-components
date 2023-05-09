@@ -61,8 +61,6 @@ export type SearcherEntity = {
 };
 
 export type FileExportEntity = {
-  staDate: string; // 统计日期
-  companyCde: string; // 公司编码
-  containTwoElec?: string; // 是否含二电
   file?: File;
+  [key: string]: any;
 };

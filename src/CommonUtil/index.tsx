@@ -1,35 +1,11 @@
 import { CloudUploadOutlined, DownloadOutlined } from '@ant-design/icons';
 import { Button, Row, Space, Upload, message } from 'antd';
 import { FormInstance } from 'antd/es/form';
-import { CommonColumnsType, ResponseEntity } from 'easycc-rc-5/types';
+import { CommonColumnsType, ResponseEntity } from 'easycc-rc-5/entity';
 import { handleSearchParams } from 'easycc-rc-5/util/handleParams';
 import React, { CSSProperties } from 'react';
 
 type CommonUtilProps = {
-  /**
-   * 自定显示工具栏按钮,设置 false 即可隐藏,默认展示全部
-   */
-  actions?:
-    | [
-        {
-          key: 'import';
-          hide: boolean;
-        },
-        {
-          key: 'export';
-          hide: boolean;
-        },
-        {
-          key: 'calculate';
-          hide: boolean;
-        },
-        {
-          key: 'reload';
-          hide: boolean;
-        },
-      ]
-    | false;
-
   /**
    * 附带参数
    */
@@ -63,20 +39,6 @@ type CommonUtilProps = {
 
 const CommonUtil: React.FC<CommonUtilProps> = (props) => {
   const {
-    actions = [
-      {
-        key: 'import',
-        hide: false,
-      },
-      {
-        key: 'export',
-        hide: false,
-      },
-      {
-        key: 'reload',
-        hide: false,
-      },
-    ],
     data,
     searchFormRef,
     columns,
@@ -123,53 +85,51 @@ const CommonUtil: React.FC<CommonUtilProps> = (props) => {
   return (
     <Row className="m-2" justify="end" style={style}>
       <Space>
-        {actions &&
-          !actions.find((action) => action.key === 'import')?.hide && (
-            <Upload
-              accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-              beforeUpload={async (file) => {
-                let newSearch = {};
-                if (searchFormRef && columns) {
-                  const searcher = searchFormRef.getFieldsValue();
-                  newSearch = handleSearchParams(searcher, columns);
+        {exportExcelService && (
+          <Upload
+            accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            beforeUpload={async (file) => {
+              let newSearch = {};
+              if (searchFormRef && columns) {
+                const searcher = searchFormRef.getFieldsValue();
+                newSearch = handleSearchParams(searcher, columns);
+              }
+              const payload = {
+                file,
+                ...newSearch,
+                ...data,
+              };
+              if (importExcelService) {
+                const res = await importExcelService(payload);
+                if (res.success) {
+                  message.success('导入成功');
+                } else {
+                  message.error('导入失败');
                 }
-                const payload = {
-                  file,
-                  ...newSearch,
-                  ...data,
-                };
-                if (importExcelService) {
-                  const res = await importExcelService(payload);
-                  if (res.success) {
-                    message.success('导入成功');
-                  } else {
-                    message.error('导入失败');
-                  }
-                  return res.success;
-                }
-              }}
-              showUploadList={false}
-            >
-              <Button
-                style={{ background: '#713ABD', color: '#fff' }}
-                icon={<CloudUploadOutlined style={{ fontSize: 20 }} />}
-              >
-                导入
-              </Button>
-            </Upload>
-          )}
-        {actions &&
-          !actions.find((action) => action.key === 'export')?.hide && (
+                return res.success;
+              }
+            }}
+            showUploadList={false}
+          >
             <Button
-              key="export"
-              type="primary"
-              onClick={exportData}
-              style={{ background: '#1DA94D', color: '#fff' }}
-              icon={<DownloadOutlined style={{ fontSize: 20 }} />}
+              style={{ background: '#713ABD', color: '#fff' }}
+              icon={<CloudUploadOutlined style={{ fontSize: 20 }} />}
             >
-              导出
+              导入
             </Button>
-          )}
+          </Upload>
+        )}
+        {importExcelService && (
+          <Button
+            key="export"
+            type="primary"
+            onClick={exportData}
+            style={{ background: '#1DA94D', color: '#fff' }}
+            icon={<DownloadOutlined style={{ fontSize: 20 }} />}
+          >
+            导出
+          </Button>
+        )}
       </Space>
     </Row>
   );

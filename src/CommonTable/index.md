@@ -55,6 +55,8 @@ export default () => {
     <CommonTable
       columns={columns}
       formItems={formItems}
+      modalLabel="项目管理"
+      formInstance={form}
       getByPageService={async () => {
         return Promise.resolve({
           success: true,
@@ -89,8 +91,6 @@ export default () => {
           success: true,
         });
       }}
-      modalLabel="项目管理"
-      formInstance={form}
       importExcelService={async () => {}}
       exportExcelService={async () => {}}
     />

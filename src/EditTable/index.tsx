@@ -24,14 +24,14 @@ import type { FormInstance } from 'antd/es/form';
 import { TableProps } from 'antd/es/table';
 import { CommonUtil } from 'easycc-rc-5';
 import SearchBar from 'easycc-rc-5/SearchBar';
-import { useDebounceFn } from 'easycc-rc-5/hooks/useDebounceFn';
 import {
   BaseEntity,
   CommonColumnsType,
   PageResponseEntity,
   PaginationEntity,
   ResponseEntity,
-} from 'easycc-rc-5/types';
+} from 'easycc-rc-5/entity';
+import { useDebounceFn } from 'easycc-rc-5/hooks/useDebounceFn';
 import { MAX_PAGE_SIZE } from 'easycc-rc-5/util/constants';
 import { handleSearchParams } from 'easycc-rc-5/util/handleParams';
 import moment, { Moment } from 'moment';
@@ -334,14 +334,6 @@ interface EditTableProps<T> {
   actions?:
     | [
         {
-          key: 'import';
-          hide: boolean;
-        },
-        {
-          key: 'export';
-          hide: boolean;
-        },
-        {
           key: 'calculate';
           hide: boolean;
         },
@@ -397,14 +389,6 @@ function EditTable<T extends BaseEntity>(
     headerRender = () => <div></div>,
     enableRefresh = true,
     actions = [
-      {
-        key: 'import',
-        hide: false,
-      },
-      {
-        key: 'export',
-        hide: false,
-      },
       {
         key: 'calculate',
         hide: false,
@@ -513,7 +497,6 @@ function EditTable<T extends BaseEntity>(
             <CommonUtil
               searchFormRef={searchFormRef}
               columns={columns}
-              actions={actions}
               exportExcelService={exportExcelService}
               importExcelService={importExcelService}
             />

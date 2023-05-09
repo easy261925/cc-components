@@ -1,5 +1,5 @@
 import { Spin } from 'antd';
-import { ResponseEntity } from 'easycc-rc-5/types';
+import { ResponseEntity } from 'easycc-rc-5/entity';
 import ReactEcharts, { EChartsOption } from 'echarts-for-react';
 import type { CSSProperties } from 'react';
 import React, { useEffect, useRef, useState } from 'react';

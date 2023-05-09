@@ -12,16 +12,16 @@ import {
 } from 'antd';
 import { FormInstance } from 'antd/es/form';
 import CommonUtil from 'easycc-rc-5/CommonUtil';
-import { useDebounceFn } from 'easycc-rc-5/hooks/useDebounceFn';
-import SearchBar from 'easycc-rc-5/SearchBar';
-import { BaseEntity } from 'easycc-rc-5/types';
 import {
+  BaseEntity,
   CommonColumnsType,
   FormModeEnum,
   PageResponseEntity,
   PaginationEntity,
   ResponseEntity,
-} from 'easycc-rc-5/types/CommonEntity';
+} from 'easycc-rc-5/entity';
+import { useDebounceFn } from 'easycc-rc-5/hooks/useDebounceFn';
+import SearchBar from 'easycc-rc-5/SearchBar';
 import {
   handleParams,
   handleSearchParams,
@@ -75,29 +75,6 @@ interface CommonTableProps<T> {
    */
   data?: any;
   /**
-   * 自定显示工具栏按钮,设置 false 即可隐藏,默认展示全部
-   */
-  actions?:
-    | [
-        {
-          key: 'import';
-          hide: boolean;
-        },
-        {
-          key: 'export';
-          hide: boolean;
-        },
-        {
-          key: 'calculate';
-          hide: boolean;
-        },
-        {
-          key: 'reload';
-          hide: boolean;
-        },
-      ]
-    | false;
-  /**
    * 导出接口
    * @param payload 导出参数
    * @returns
@@ -123,20 +100,6 @@ function CommonTable<T extends BaseEntity>(props: CommonTableProps<T>) {
     modalStyle = {},
     formInstance,
     data,
-    actions = [
-      {
-        key: 'import',
-        hide: false,
-      },
-      {
-        key: 'export',
-        hide: false,
-      },
-      {
-        key: 'reload',
-        hide: false,
-      },
-    ],
     exportExcelService,
     importExcelService,
     ...ext
@@ -322,25 +285,26 @@ function CommonTable<T extends BaseEntity>(props: CommonTableProps<T>) {
             exportExcelService={exportExcelService}
             importExcelService={importExcelService}
           />
-          <Button
-            key="create"
-            type="primary"
-            onClick={() => {
-              setFormMode(FormModeEnum.CREATE);
-              setOpen(true);
-              formInstance?.resetFields();
-            }}
-          >
-            新增
-          </Button>
-          {actions &&
-            !actions.find((action) => action.key === 'reload')?.hide && (
-              <Button
-                key="reload"
-                icon={<RedoOutlined />}
-                onClick={() => getDataByPage({ current: 1 })}
-              ></Button>
-            )}
+          {createService && (
+            <Button
+              key="create"
+              type="primary"
+              onClick={() => {
+                setFormMode(FormModeEnum.CREATE);
+                setOpen(true);
+                formInstance?.resetFields();
+              }}
+            >
+              新增
+            </Button>
+          )}
+          {getByPageService && (
+            <Button
+              key="reload"
+              icon={<RedoOutlined />}
+              onClick={() => getDataByPage({ current: 1 })}
+            ></Button>
+          )}
         </Space>
       </Row>
       <Spin spinning={loading}>
