@@ -302,11 +302,6 @@ interface EditTableProps<T> {
     params: Partial<object> & PaginationEntity,
   ) => Promise<PageResponseEntity<T>>;
   /**
-   * 搜索项
-   * @default []
-   */
-  formItems?: JSX.Element[];
-  /**
    * 获取修改后的数据回调
    */
   getDataSource?: (dataSource: T[]) => Promise<boolean>;
@@ -315,7 +310,7 @@ interface EditTableProps<T> {
    */
   getDataButtonText?: string;
   /**
-   * 工具栏按钮
+   * 工具栏
    * @returns
    */
   toolBarRender?: () => JSX.Element;

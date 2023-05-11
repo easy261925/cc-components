@@ -97,3 +97,20 @@ export default () => {
   );
 };
 ```
+
+## API
+
+| 属性               | 描述               | 类型                                                                             | 默认值 |
+| ------------------ | ------------------ | -------------------------------------------------------------------------------- | ------ |
+| modalLabel         | 弹窗标题           | `string`                                                                         | ---    |
+| columns            | 表格字段内容       | `CommonColumnsType<T>[]`                                                         | ---    |
+| getByPageService   | 获取数据的分页接口 | `(params: Partial<object> & PaginationEntity) => Promise<PageResponseEntity<T>>` | ---    |
+| createService      | 新增数据接口       | `(params: Partial<T>) => Promise<ResponseEntity>`                                | ---    |
+| updateService      | 修改数据接口       | `(params: Partial<T>) => Promise<ResponseEntity>`                                | ---    |
+| deleteService      | 删除数据接口       | `(id: string) => Promise<ResponseEntity>`                                        | ---    |
+| formItems          | Modal 表单项       | `JSX.Element[]`                                                                  | ---    |
+| formInstance       | form 实例          | `FormInstance`                                                                   | ---    |
+| data               | 查询参数           | `Object`                                                                         | ---    |
+| rowKey             | rowKey             | `string`                                                                         | `id`   |
+| exportExcelService | 导出接口           | `(payload: any) => Promise<Blob>`                                                | ---    |
+| importExcelService | 导入接口           | `(payload: any) => Promise<ResponseEntity>`                                      | ---    |

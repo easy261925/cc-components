@@ -70,3 +70,14 @@ export default () => {
   );
 };
 ```
+
+## API
+
+| 属性          | 描述               | 类型                                                    | 默认值 |
+| ------------- | ------------------ | ------------------------------------------------------- | ------ |
+| columns       | 搜索项内容         | `CommonColumnsType<T>[]`                                | ---    |
+| getDataByPage | 查询数据函数       | `(params?: Partial<object & PaginationEntity>) => void` | ---    |
+| formInstance  | form 实例          | `FormInstance`                                          | ---    |
+| onChange      | 获取改变的搜索项值 | `(searcher: SearcherEntity) => void;`                   | ---    |
+| style         | 自定义样式         | `CSSProperties`                                         | ---    |
+| colSpan       | 每个搜索框占格     | `number`                                                | `6`    |

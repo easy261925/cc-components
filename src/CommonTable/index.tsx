@@ -30,7 +30,7 @@ import React, { cloneElement, CSSProperties, useEffect, useState } from 'react';
 
 interface CommonTableProps<T> {
   /**
-   * 弹窗显示的业务字段
+   * 弹窗标题
    * @default ''
    */
   modalLabel?: string;
@@ -75,6 +75,10 @@ interface CommonTableProps<T> {
    */
   data?: any;
   /**
+   * table rowKey
+   */
+  rowKey?: string;
+  /**
    * 导出接口
    * @param payload 导出参数
    * @returns
@@ -100,6 +104,7 @@ function CommonTable<T extends BaseEntity>(props: CommonTableProps<T>) {
     modalStyle = {},
     formInstance,
     data,
+    rowKey = 'id',
     exportExcelService,
     importExcelService,
     ...ext
@@ -309,7 +314,7 @@ function CommonTable<T extends BaseEntity>(props: CommonTableProps<T>) {
       </Row>
       <Spin spinning={loading}>
         <Table<T>
-          rowKey="id"
+          rowKey={rowKey}
           columns={tableColumns}
           dataSource={dataSource}
           size="small"

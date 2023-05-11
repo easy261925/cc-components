@@ -97,3 +97,17 @@ export default () => {
   );
 };
 ```
+
+## API
+
+| 属性            | 描述                  | 类型                                      | 默认值            |
+| --------------- | --------------------- | ----------------------------------------- | ----------------- |
+| request         | 网络请求接口          | `(params?: T) => Promise<ResponseEntity>` | ---               |
+| params          | 网络请求参数          | `T`                                       | ---               |
+| interval        | 自动刷新数据 （分钟） | `number`                                  | ---               |
+| title           | 标题                  | `string`                                  | ---               |
+| backgroundImage | 背景图                | `string`                                  | ---               |
+| style           | 自定义样式            | `CSSProperties`                           | ---               |
+| echartsStyle    | eCharts 自定义样式    | `CSSProperties`                           | `{ height: 200 }` |
+| option          | eCharts option 配置   | `EChartsOption`                           | ---               |
+| theme           | eCharts 主题配置      | `string`                                  | ---               |

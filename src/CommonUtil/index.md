@@ -42,3 +42,14 @@ export default () => {
   );
 };
 ```
+
+## API
+
+| 属性               | 描述         | 类型                                        | 默认值 |
+| ------------------ | ------------ | ------------------------------------------- | ------ |
+| data               | 附带参数     | `Object`                                    | ---    |
+| searchFormRef      | form 实例    | `FormInstance`                              | ---    |
+| columns?           | 表格字段内容 | `CommonColumnsType<T>[]`                    | ---    |
+| style              | 自定义样式   | `CSSProperties`                             | ---    |
+| exportExcelService | 导出接口     | `(payload: any) => Promise<Blob>`           | ---    |
+| importExcelService | 导入接口     | `(payload: any) => Promise<ResponseEntity>` | ---    |
