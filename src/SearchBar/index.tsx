@@ -160,7 +160,15 @@ function SearchBar<T extends BaseEntity>(props: SearchBarProps<T>) {
             md: { span: 24 },
             lg: { span: 24 },
             xl: { span: 24 },
-            xxl: { span: 12 },
+            xxl: { span: 16 },
+          }}
+          labelCol={{
+            xs: { span: 24 },
+            sm: { span: 24 },
+            md: { span: 24 },
+            lg: { span: 24 },
+            xl: { span: 24 },
+            xxl: { span: 8 },
           }}
         >
           {allOptions.map((item) => {
