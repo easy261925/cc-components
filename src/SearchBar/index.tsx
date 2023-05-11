@@ -110,7 +110,7 @@ function SearchBar<T extends BaseEntity>(props: SearchBarProps<T>) {
     let needCollapseRender = true;
     if (allLength >= oneLineOptionLength) {
       if (collapsed) {
-        showOptions = allOptions.slice(0, 4 - 1);
+        showOptions = allOptions.slice(0, oneLineOptionLength - 1);
       } else {
         showOptions = allOptions;
       }
@@ -151,7 +151,18 @@ function SearchBar<T extends BaseEntity>(props: SearchBarProps<T>) {
 
     return (
       <Card bodyStyle={{ padding: '10px 24px' }} style={style}>
-        <Form form={formInstance} layout="inline">
+        <Form
+          form={formInstance}
+          layout="inline"
+          wrapperCol={{
+            xs: { span: 24 },
+            sm: { span: 24 },
+            md: { span: 24 },
+            lg: { span: 24 },
+            xl: { span: 24 },
+            xxl: { span: 12 },
+          }}
+        >
           {allOptions.map((item) => {
             const show = showOptions.find(
               (option) => option.dataIndex === item.dataIndex,
