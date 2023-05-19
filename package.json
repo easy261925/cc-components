@@ -1,6 +1,6 @@
 {
   "name": "easycc-rc-5",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A react library developed with dumi",
   "license": "MIT",
   "module": "dist/index.js",
@@ -46,6 +46,7 @@
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
     "antd": "^4.24.8",
+    "axios": "^1.4.0",
     "echarts-for-react": "^3.0.2",
     "moment": "^2.29.4"
   },

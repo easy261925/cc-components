@@ -22,7 +22,9 @@ import React, {
 import { FormOutlined, RedoOutlined } from '@ant-design/icons';
 import type { FormInstance } from 'antd/es/form';
 import { TableProps } from 'antd/es/table';
+import { AxiosResponse } from 'axios';
 import { CommonUtil } from 'easycc-rc-5';
+import { CommonUtilProps } from 'easycc-rc-5/CommonUtil';
 import SearchBar from 'easycc-rc-5/SearchBar';
 import {
   BaseEntity,
@@ -363,13 +365,17 @@ interface EditTableProps<T> {
    * @param payload 导出参数
    * @returns
    */
-  exportExcelService?: (payload: any) => Promise<Blob>;
+  exportExcelService?: (payload: any) => Promise<AxiosResponse>;
   /**
    * 导入接口
    * @param payload 导出参数
    * @returns
    */
   importExcelService?: (payload: any) => Promise<ResponseEntity>;
+  /**
+   * 工具栏属性
+   */
+  commonUtilProps?: CommonUtilProps;
 }
 
 function EditTable<T extends BaseEntity>(
@@ -400,6 +406,7 @@ function EditTable<T extends BaseEntity>(
     rowOnChange,
     exportExcelService,
     importExcelService,
+    commonUtilProps,
     ...ext
   } = props;
   const [dataSource, setDataSource] = useState<T[]>([]);
@@ -494,6 +501,7 @@ function EditTable<T extends BaseEntity>(
               columns={columns}
               exportExcelService={exportExcelService}
               importExcelService={importExcelService}
+              {...commonUtilProps}
             />
             {actions &&
               !actions.find((action) => action.key === 'calculate')?.hide && (

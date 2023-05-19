@@ -97,5 +97,6 @@ export default () => {
 | pageSize           | 显示行数             | `number`                                                                         | `MAX_PAGE_SIZE` |
 | search             | 是否显示搜索栏       | `boolean`                                                                        | `true`          |
 | rowOnChange        | 监听行数据改变       | `(row: T) => Promise<boolean>`                                                   | ---             |
-| exportExcelService | 导出接口             | `(payload: any) => Promise<Blob>`                                                | ---             |
+| exportExcelService | 导出接口             | `(payload: any) => Promise<AxiosResponse>`                                       | ---             |
 | importExcelService | 导入接口             | `(payload: any) => Promise<ResponseEntity>`                                      | ---             |
+| commonUtilProps    | 工具栏 props         | `CommonUtilProps`                                                                | ---             |

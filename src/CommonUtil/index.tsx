@@ -1,11 +1,12 @@
 import { CloudUploadOutlined, DownloadOutlined } from '@ant-design/icons';
 import { Button, Row, Space, Upload, message } from 'antd';
 import { FormInstance } from 'antd/es/form';
+import { AxiosResponse } from 'axios';
 import { CommonColumnsType, ResponseEntity } from 'easycc-rc-5/entity';
 import { handleSearchParams } from 'easycc-rc-5/util/handleParams';
 import React, { CSSProperties } from 'react';
 
-type CommonUtilProps = {
+export type CommonUtilProps = {
   /**
    * 附带参数
    */
@@ -28,13 +29,18 @@ type CommonUtilProps = {
    * @param payload 导出参数
    * @returns
    */
-  exportExcelService?: (payload: any) => Promise<Blob>;
+  exportExcelService?: (payload: any) => Promise<AxiosResponse>;
   /**
    * 导入接口
    * @param payload 导出参数
    * @returns
    */
   importExcelService?: (payload: any) => Promise<ResponseEntity>;
+  /**
+   * 获取文件名函数
+   * @returns 文件名
+   */
+  getFileName?: () => string;
 };
 
 const CommonUtil: React.FC<CommonUtilProps> = (props) => {
@@ -45,6 +51,7 @@ const CommonUtil: React.FC<CommonUtilProps> = (props) => {
     style,
     exportExcelService,
     importExcelService,
+    getFileName,
   } = props;
 
   /**
@@ -65,13 +72,13 @@ const CommonUtil: React.FC<CommonUtilProps> = (props) => {
     };
     console.log('导出数据的参数', payload);
     exportExcelService(payload).then((res) => {
+      console.log('导出数据的参数----', payload);
       if (!res) return;
-      const fileInfo = {
-        blobData: res,
-        fileName: decodeURI(res.type),
-      };
+      const fileName = getFileName
+        ? getFileName()
+        : decodeURI(res.headers['content-disposition']);
+      const blobData = res.data;
       const tmpLink = document.createElement('a');
-      const { blobData, fileName } = fileInfo;
       const blob = new Blob([blobData]);
       const objectUrl = URL.createObjectURL(blob);
       tmpLink.href = objectUrl;

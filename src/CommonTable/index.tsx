@@ -11,7 +11,8 @@ import {
   Table,
 } from 'antd';
 import { FormInstance } from 'antd/es/form';
-import CommonUtil from 'easycc-rc-5/CommonUtil';
+import { AxiosResponse } from 'axios';
+import CommonUtil, { CommonUtilProps } from 'easycc-rc-5/CommonUtil';
 import {
   BaseEntity,
   CommonColumnsType,
@@ -83,13 +84,17 @@ interface CommonTableProps<T> {
    * @param payload 导出参数
    * @returns
    */
-  exportExcelService?: (payload: any) => Promise<Blob>;
+  exportExcelService?: (payload: any) => Promise<AxiosResponse>;
   /**
    * 导入接口
    * @param payload 导出参数
    * @returns
    */
   importExcelService?: (payload: any) => Promise<ResponseEntity>;
+  /**
+   * 工具栏属性
+   */
+  commonUtilProps?: CommonUtilProps;
 }
 
 function CommonTable<T extends BaseEntity>(props: CommonTableProps<T>) {
@@ -107,6 +112,7 @@ function CommonTable<T extends BaseEntity>(props: CommonTableProps<T>) {
     rowKey = 'id',
     exportExcelService,
     importExcelService,
+    commonUtilProps,
     ...ext
   } = props;
   const [open, setOpen] = useState(false);
@@ -289,6 +295,7 @@ function CommonTable<T extends BaseEntity>(props: CommonTableProps<T>) {
             columns={columns}
             exportExcelService={exportExcelService}
             importExcelService={importExcelService}
+            {...commonUtilProps}
           />
           {createService && (
             <Button
