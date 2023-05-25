@@ -75,6 +75,20 @@ export default () => {
       scroll={{ y: 500 }}
       importExcelService={async () => {}}
       exportExcelService={async () => {}}
+      commonUtilProps={{
+        importButtonProps: {
+          style: {
+            backgroundColor: '#4bba79',
+            color: '#fff',
+          },
+        },
+        exportButtonProps: {
+          style: {
+            backgroundColor: '#ffa940',
+            color: '#fff',
+          },
+        },
+      }}
     />
   );
 };

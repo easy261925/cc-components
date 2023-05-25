@@ -491,7 +491,7 @@ function EditTable<T extends BaseEntity>(
           formInstance={searchFormRef}
         />
       )}
-      <Row className="m-2" justify="space-between" align="middle">
+      <Row justify="space-between" align="middle" style={{ margin: '10px 0' }}>
         {headerRender && headerRender()}
         {
           <Space>

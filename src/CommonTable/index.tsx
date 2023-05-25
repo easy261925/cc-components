@@ -288,7 +288,7 @@ function CommonTable<T extends BaseEntity>(props: CommonTableProps<T>) {
         getDataByPage={getDataByPage}
         formInstance={searchFormRef}
       />
-      <Row justify="end">
+      <Row justify="end" style={{ margin: '10px 0' }}>
         <Space>
           <CommonUtil
             searchFormRef={searchFormRef}

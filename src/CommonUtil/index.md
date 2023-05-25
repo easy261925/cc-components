@@ -45,12 +45,14 @@ export default () => {
 
 ## API
 
-| 属性               | 描述           | 类型                                        | 默认值                                         |
-| ------------------ | -------------- | ------------------------------------------- | ---------------------------------------------- |
-| data               | 附带参数       | `Object`                                    | ---                                            |
-| searchFormRef      | form 实例      | `FormInstance`                              | ---                                            |
-| columns?           | 表格字段内容   | `CommonColumnsType<T>[]`                    | ---                                            |
-| style              | 自定义样式     | `CSSProperties`                             | ---                                            |
-| exportExcelService | 导出接口       | `(payload: any) => Promise<Blob>`           | ---                                            |
-| importExcelService | 导入接口       | `(payload: any) => Promise<ResponseEntity>` | ---                                            |
-| getFileName        | 获取文件名函数 | `() => string`                              | `decodeURI(res.headers['content-disposition']` |
+| 属性               | 描述           | 类型                                        | 默认值                                              |
+| ------------------ | -------------- | ------------------------------------------- | --------------------------------------------------- |
+| data               | 附带参数       | `Object`                                    | ---                                                 |
+| searchFormRef      | form 实例      | `FormInstance`                              | ---                                                 |
+| columns?           | 表格字段内容   | `CommonColumnsType<T>[]`                    | ---                                                 |
+| style              | 自定义样式     | `CSSProperties`                             | ---                                                 |
+| exportExcelService | 导出接口       | `(payload: any) => Promise<Blob>`           | ---                                                 |
+| importExcelService | 导入接口       | `(payload: any) => Promise<ResponseEntity>` | ---                                                 |
+| getFileName        | 获取文件名函数 | `() => string`                              | `decodeURI(res.headers['content-disposition']`      |
+| importButtonProps  | 导入按钮属性   | `ButtonProps`                               | `{style: { background: '#713ABD', color: '#fff' }}` |
+| exportButtonProps  | 导入按钮属性   | `ButtonProps`                               | `{style: { background: '#1DA94D', color: '#fff' }}` |

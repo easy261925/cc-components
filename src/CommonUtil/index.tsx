@@ -1,5 +1,5 @@
 import { CloudUploadOutlined, DownloadOutlined } from '@ant-design/icons';
-import { Button, Row, Space, Upload, message } from 'antd';
+import { Button, ButtonProps, Row, Space, Upload, message } from 'antd';
 import { FormInstance } from 'antd/es/form';
 import { AxiosResponse } from 'axios';
 import { CommonColumnsType, ResponseEntity } from 'easycc-rc-5/entity';
@@ -41,6 +41,14 @@ export type CommonUtilProps = {
    * @returns 文件名
    */
   getFileName?: () => string;
+  /**
+   * 导入按钮属性
+   */
+  importButtonProps?: ButtonProps;
+  /**
+   * 导出按钮属性
+   */
+  exportButtonProps?: ButtonProps;
 };
 
 const CommonUtil: React.FC<CommonUtilProps> = (props) => {
@@ -52,6 +60,12 @@ const CommonUtil: React.FC<CommonUtilProps> = (props) => {
     exportExcelService,
     importExcelService,
     getFileName,
+    importButtonProps = {
+      style: { background: '#713ABD', color: '#fff' },
+    },
+    exportButtonProps = {
+      style: { background: '#1DA94D', color: '#fff' },
+    },
   } = props;
 
   /**
@@ -119,8 +133,8 @@ const CommonUtil: React.FC<CommonUtilProps> = (props) => {
             showUploadList={false}
           >
             <Button
-              style={{ background: '#713ABD', color: '#fff' }}
               icon={<CloudUploadOutlined style={{ fontSize: 20 }} />}
+              {...importButtonProps}
             >
               导入
             </Button>
@@ -131,8 +145,8 @@ const CommonUtil: React.FC<CommonUtilProps> = (props) => {
             key="export"
             type="primary"
             onClick={exportData}
-            style={{ background: '#1DA94D', color: '#fff' }}
             icon={<DownloadOutlined style={{ fontSize: 20 }} />}
+            {...exportButtonProps}
           >
             导出
           </Button>
