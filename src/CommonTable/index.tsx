@@ -95,6 +95,10 @@ interface CommonTableProps<T> {
    * 工具栏属性
    */
   commonUtilProps?: CommonUtilProps;
+  /**
+   * 是否显示搜索项
+   */
+  search?: boolean;
 }
 
 function CommonTable<T extends BaseEntity>(props: CommonTableProps<T>) {
@@ -113,6 +117,7 @@ function CommonTable<T extends BaseEntity>(props: CommonTableProps<T>) {
     exportExcelService,
     importExcelService,
     commonUtilProps,
+    search = true,
     ...ext
   } = props;
   const [open, setOpen] = useState(false);
@@ -283,11 +288,13 @@ function CommonTable<T extends BaseEntity>(props: CommonTableProps<T>) {
 
   return (
     <div className="flex-col">
-      <SearchBar
-        columns={columns}
-        getDataByPage={getDataByPage}
-        formInstance={searchFormRef}
-      />
+      {search && (
+        <SearchBar
+          columns={columns}
+          getDataByPage={getDataByPage}
+          formInstance={searchFormRef}
+        />
+      )}
       <Row justify="end" style={{ margin: '10px 0' }}>
         <Space>
           <CommonUtil

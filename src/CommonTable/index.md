@@ -112,6 +112,7 @@ export default () => {
 | formInstance       | form 实例          | `FormInstance`                                                                   | ---    |
 | data               | 查询参数           | `Object`                                                                         | ---    |
 | rowKey             | rowKey             | `string`                                                                         | `id`   |
+| search             | 是否显示搜索项     | `boolean`                                                                        | `true` |
 | exportExcelService | 导出接口           | `(payload: any) => Promise<AxiosResponse>`                                       | ---    |
 | importExcelService | 导入接口           | `(payload: any) => Promise<ResponseEntity>`                                      | ---    |
 | commonUtilProps    | 工具栏 props       | `CommonUtilProps`                                                                | ---    |

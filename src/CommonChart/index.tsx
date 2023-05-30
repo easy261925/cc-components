@@ -19,7 +19,7 @@ type CommonChartProps<T> = {
   option?: EChartsOption;
 
   /**
-   * @params 自动刷新数据 （分钟）
+   * @params 自动刷新数据 (秒)
    * */
   interval?: number;
   /**
