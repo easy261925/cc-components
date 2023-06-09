@@ -14,6 +14,7 @@ import { FormInstance } from 'antd/es/form';
 import { AxiosResponse } from 'axios';
 import CommonUtil, { CommonUtilProps } from 'easycc-rc-5/CommonUtil';
 import {
+  ActionType,
   BaseEntity,
   CommonColumnsType,
   FormModeEnum,
@@ -27,7 +28,14 @@ import {
   handleParams,
   handleSearchParams,
 } from 'easycc-rc-5/util/handleParams';
-import React, { cloneElement, CSSProperties, useEffect, useState } from 'react';
+import React, {
+  cloneElement,
+  CSSProperties,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react';
 
 interface CommonTableProps<T> {
   /**
@@ -99,6 +107,10 @@ interface CommonTableProps<T> {
    * 是否显示搜索项
    */
   search?: boolean;
+  /**
+   * CommonTable action 的引用，便于自定义触发
+   */
+  actionRef?: React.Ref<ActionType | undefined>;
 }
 
 function CommonTable<T extends BaseEntity>(props: CommonTableProps<T>) {
@@ -118,6 +130,7 @@ function CommonTable<T extends BaseEntity>(props: CommonTableProps<T>) {
     importExcelService,
     commonUtilProps,
     search = true,
+    actionRef: propsActionRef,
     ...ext
   } = props;
   const [open, setOpen] = useState(false);
@@ -130,6 +143,13 @@ function CommonTable<T extends BaseEntity>(props: CommonTableProps<T>) {
   );
   const [searchFormRef] = Form.useForm();
   const [loading, setLoading] = useState(false);
+  /** 通用的来操作子节点的工具类 */
+  const actionRef = useRef<ActionType>();
+
+  if (propsActionRef) {
+    // @ts-ignore
+    propsActionRef.current = actionRef.current;
+  }
 
   // 获取分页数据
   const getDataByPage = async (params?: Partial<object & PaginationEntity>) => {
@@ -157,7 +177,14 @@ function CommonTable<T extends BaseEntity>(props: CommonTableProps<T>) {
         });
       return Promise.resolve(true);
     }
+    return Promise.resolve(false);
   };
+
+  useImperativeHandle(propsActionRef, () => {
+    return {
+      reload: getDataByPage,
+    };
+  });
 
   /**
    * 初始化请求防抖

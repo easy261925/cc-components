@@ -15,6 +15,7 @@ import React, {
   createContext,
   useContext,
   useEffect,
+  useImperativeHandle,
   useRef,
   useState,
 } from 'react';
@@ -27,6 +28,7 @@ import { CommonUtil } from 'easycc-rc-5';
 import { CommonUtilProps } from 'easycc-rc-5/CommonUtil';
 import SearchBar from 'easycc-rc-5/SearchBar';
 import {
+  ActionType,
   BaseEntity,
   CommonColumnsType,
   PageResponseEntity,
@@ -376,6 +378,10 @@ interface EditTableProps<T> {
    * 工具栏属性
    */
   commonUtilProps?: CommonUtilProps;
+  /**
+   * EditTable action 的引用，便于自定义触发
+   */
+  actionRef?: React.Ref<ActionType | undefined>;
 }
 
 function EditTable<T extends BaseEntity>(
@@ -407,6 +413,7 @@ function EditTable<T extends BaseEntity>(
     exportExcelService,
     importExcelService,
     commonUtilProps,
+    actionRef: propsActionRef,
     ...ext
   } = props;
   const [dataSource, setDataSource] = useState<T[]>([]);
@@ -414,6 +421,14 @@ function EditTable<T extends BaseEntity>(
   const [current, setCurrent] = useState(1);
   const [searchFormRef] = Form.useForm();
   const [loading, setLoading] = useState(false);
+
+  /** 通用的来操作子节点的工具类 */
+  const actionRef = useRef<ActionType>();
+
+  if (propsActionRef) {
+    // @ts-ignore
+    propsActionRef.current = actionRef.current;
+  }
 
   const components = {
     body: {
@@ -451,6 +466,12 @@ function EditTable<T extends BaseEntity>(
     }
     return Promise.resolve(true);
   };
+
+  useImperativeHandle(propsActionRef, () => {
+    return {
+      reload: getDataByPage,
+    };
+  });
 
   /**
    * 初始化请求防抖

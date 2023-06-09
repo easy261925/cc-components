@@ -64,3 +64,8 @@ export type FileExportEntity = {
   file?: File;
   [key: string]: any;
 };
+
+export type ActionType = {
+  /** @name 重新获取数据 */
+  reload: (params?: Partial<object & PaginationEntity>) => Promise<boolean>;
+};

@@ -96,21 +96,22 @@ export default () => {
 
 ## API
 
-| 属性               | 描述                 | 类型                                                                             | 默认值          |
-| ------------------ | -------------------- | -------------------------------------------------------------------------------- | --------------- |
-| columns            | 表格字段内容         | `CommonColumnsType<T>[]`                                                         | ---             |
-| getByPageService   | 获取数据的分页接口   | `(params: Partial<object> & PaginationEntity) => Promise<PageResponseEntity<T>>` | ---             |
-| getDataSource      | 获取修改后的数据回调 | `(dataSource: T[]) => Promise<boolean>`                                          | ---             |
-| getDataButtonText  | 获取数据按钮文案     | `string`                                                                         | ---             |
-| toolBarRender      | 工具栏               | `() => JSX.Element`                                                              | ---             |
-| headerRender       | 表格头部渲染         | `() => JSX.Element`                                                              | ---             |
-| enableRefresh      | 是否自动刷新         | `boolean`                                                                        | `true`          |
-| actions            | 自定显示工具栏按钮   | `boolean`                                                                        | `计算并保存`    |
-| rowKey             | rowKey               | `keyof T`                                                                        | `id`            |
-| data               | 查询参数             | `Object`                                                                         | ---             |
-| pageSize           | 显示行数             | `number`                                                                         | `MAX_PAGE_SIZE` |
-| search             | 是否显示搜索栏       | `boolean`                                                                        | `true`          |
-| rowOnChange        | 监听行数据改变       | `(row: T) => Promise<boolean>`                                                   | ---             |
-| exportExcelService | 导出接口             | `(payload: any) => Promise<AxiosResponse>`                                       | ---             |
-| importExcelService | 导入接口             | `(payload: any) => Promise<ResponseEntity>`                                      | ---             |
-| commonUtilProps    | 工具栏 props         | `CommonUtilProps`                                                                | ---             |
+| 属性               | 描述                                    | 类型                                                                             | 默认值          |
+| ------------------ | --------------------------------------- | -------------------------------------------------------------------------------- | --------------- |
+| columns            | 表格字段内容                            | `CommonColumnsType<T>[]`                                                         | ---             |
+| getByPageService   | 获取数据的分页接口                      | `(params: Partial<object> & PaginationEntity) => Promise<PageResponseEntity<T>>` | ---             |
+| getDataSource      | 获取修改后的数据回调                    | `(dataSource: T[]) => Promise<boolean>`                                          | ---             |
+| getDataButtonText  | 获取数据按钮文案                        | `string`                                                                         | ---             |
+| toolBarRender      | 工具栏                                  | `() => JSX.Element`                                                              | ---             |
+| headerRender       | 表格头部渲染                            | `() => JSX.Element`                                                              | ---             |
+| enableRefresh      | 是否自动刷新                            | `boolean`                                                                        | `true`          |
+| actions            | 自定显示工具栏按钮                      | `boolean`                                                                        | `计算并保存`    |
+| rowKey             | rowKey                                  | `keyof T`                                                                        | `id`            |
+| data               | 查询参数                                | `Object`                                                                         | ---             |
+| pageSize           | 显示行数                                | `number`                                                                         | `MAX_PAGE_SIZE` |
+| search             | 是否显示搜索栏                          | `boolean`                                                                        | `true`          |
+| rowOnChange        | 监听行数据改变                          | `(row: T) => Promise<boolean>`                                                   | ---             |
+| exportExcelService | 导出接口                                | `(payload: any) => Promise<AxiosResponse>`                                       | ---             |
+| importExcelService | 导入接口                                | `(payload: any) => Promise<ResponseEntity>`                                      | ---             |
+| commonUtilProps    | 工具栏 props                            | `CommonUtilProps`                                                                | ---             |
+| actionRef          | EditTable action 的引用，便于自定义触发 | `MutableRefObject<ActionType>`                                                   | ---             |
